@@ -1,0 +1,53 @@
+{
+  "tests": [
+    {
+      "name": "Test Ozon connect endpoint",
+      "method": "POST",
+      "path": "/?action=connect",
+      "body": {
+        "clientId": "123456",
+        "apiKey": "test-api-key-12345"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true,
+        "message": "string",
+        "shopId": "string"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test publish product to Ozon",
+      "method": "POST",
+      "path": "/?action=publish",
+      "body": {
+        "templateId": 1,
+        "name": "Визитка Классика",
+        "category": "Визитки",
+        "price": 500,
+        "description": "Качественная печать визиток"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true,
+        "product": {
+          "product_id": "string",
+          "name": "string"
+        }
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test Ozon stats retrieval",
+      "method": "GET",
+      "path": "/?action=stats",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "total_products": 12,
+        "active_orders": 8,
+        "completed_orders": 24
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
